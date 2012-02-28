@@ -111,15 +111,25 @@ function check_vars($hook, $type, $return, $params) {
         return false;
     }
 
+    $tags        = elgg_extract("tags",        $params, '');
+    $comments_on = elgg_extract("comments_on", $params, 'Off');
+    $title       = elgg_extract("title",       $params, ''); 
+    
+    
     // check if title value is given
     if (empty($return['title'])) {
         register_error(elgg_echo('phloor_starter_ENTITY:error:check_vars:title:empty'));
-        return false;
+            return false;
     }
     
-    if(strcmp('On', $return['comments_on']) != 0) {
+    
+    // convert tag string to array
+    $return['tags'] = string_to_tag_array($tags);
+    
+    if(strcmp('On', $comments_on) != 0) {
         $return['comments_on'] = 'Off';
     }
+    
 
     return $return;
 }
