@@ -128,7 +128,6 @@ function check_vars($hook, $type, $return, $params) {
     if(strcmp('On', $comments_on) != 0) {
         $return['comments_on'] = 'Off';
     }
-    
 
     return $return;
 }

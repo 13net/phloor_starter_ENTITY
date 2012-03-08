@@ -104,8 +104,6 @@ if ($full) {
 		'body'    => $body,
 	));	
 	
-	echo 'tags:'. $tags;
-	
 } else {        
 	$params = array(
 		'entity'   => $entity,
@@ -136,7 +134,4 @@ if ($full) {
 	$list_body = elgg_view('object/elements/summary', $params);
 
 	echo elgg_view_image_block($owner_icon, $list_body, $params);
-	
-	echo 'tags:'. $tags;
-	
 }
