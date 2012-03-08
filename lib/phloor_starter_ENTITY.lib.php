@@ -17,11 +17,11 @@ function instance_of($entity) {
  */
 function default_vars($hook, $type, $return, $params) {
     $return = array(
-    	'title'          => 'DEFAULT TITLE',
-    	'description'    => 'DEFAULT DESCRIPTION',
-    	'comments_on'    => 'Off',
-    	'tags'           => '',
-    	'access_id'      => ACCESS_DEFAULT,
+    	'title'       => 'DEFAULT TITLE',
+    	'description' => 'DEFAULT DESCRIPTION',
+    	'comments_on' => 'Off',
+    	'tags'        => '',
+    	'access_id'   => ACCESS_DEFAULT,
     );
 
     return $return;
@@ -111,9 +111,9 @@ function check_vars($hook, $type, $return, $params) {
         return false;
     }
 
-    $tags        = elgg_extract("tags",        $params, '');
-    $comments_on = elgg_extract("comments_on", $params, 'Off');
-    $title       = elgg_extract("title",       $params, ''); 
+    $tags        = elgg_extract("tags",        $return, '');
+    $comments_on = elgg_extract("comments_on", $return, 'Off');
+    $title       = elgg_extract("title",       $return, ''); 
     
     
     // check if title value is given
@@ -121,7 +121,6 @@ function check_vars($hook, $type, $return, $params) {
         register_error(elgg_echo('phloor_starter_ENTITY:error:check_vars:title:empty'));
             return false;
     }
-    
     
     // convert tag string to array
     $return['tags'] = string_to_tag_array($tags);
